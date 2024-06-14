@@ -58,6 +58,21 @@ export function getTextures() {
   return textures;
 }
 
+export function getRosePinePalette() {
+  var palette = [
+    "#b4637a",
+    "#ea9d34",
+    "#d7827e", 
+    "#286983",
+    "#56949f", 
+    "#907aa9",
+    "#9893a5",
+    "#797593",
+    "#575279", 
+  ];
+  return palette;
+}
+
 // Generate a new Texture
 export function generateNewTexture(layerTypes) {
   var textures = getTextures();
@@ -73,6 +88,8 @@ export function generateNewColor(layerTypes, mode) {
     return generateInterpolatedColor(layerTypes);
   } else if (mode === "Color Blind") {
     return generateBlindPaletteColor(layerTypes);
+  } else if (mode === "Rosé Pine") {
+    return generateRosePineColor(layerTypes);
   }
 }
 
@@ -86,6 +103,13 @@ function generatePaletteColor(layerTypes) {
 // Generate a new color using the color palette
 function generateBlindPaletteColor(layerTypes) {
   var palette = getBlindColorPalette();
+  var index = Object.keys(layerTypes).length % palette.length;
+  return palette[index];
+}
+
+// Generate a new color using the Rosé Pine Palette
+function generateRosePineColor(layerTypes) {
+  var palette = getRosePinePalette();
   var index = Object.keys(layerTypes).length % palette.length;
   return palette[index];
 }

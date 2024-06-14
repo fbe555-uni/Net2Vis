@@ -1,0 +1,27 @@
+services:
+  frontend:
+    image: net2vis/frontend
+    # volumes:
+    #   - net2vis:/net2vis
+    build: net2vis
+    ports: [
+      8888:3000
+    ]
+    links:
+      - "backend"
+  backend:
+    image: net2vis/backend
+    volumes: 
+      # - backend:/backend
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    build:
+      context: backend
+      dockerfile: backend.Dockerfile
+  tf_keras:
+    image: tf_plus_keras
+    build: backend
+# volumes:
+#   net2vis:
+#   backend:

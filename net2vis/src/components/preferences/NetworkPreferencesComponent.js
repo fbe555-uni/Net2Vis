@@ -194,7 +194,7 @@ class NetworkPreferences extends React.Component {
   };
 
   render() {
-    var options = ["Interpolation", "Palette", "Color Blind"];
+    var options = ["Interpolation", "Palette", "Color Blind", "Rosé Pine"];
     // Check the state of the Buttons
     var ungroupActive = this.props.groups.length > 0 ? true : false;
     var groupActive = this.props.selection.length > 1 ? true : false;
